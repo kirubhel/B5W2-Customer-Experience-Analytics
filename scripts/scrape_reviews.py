@@ -1,44 +1,50 @@
 from google_play_scraper import Sort, reviews
 import pandas as pd
+from tqdm import tqdm
 
-BANK_APPS = {
-    "CBE": "com.cbe.mobile.android",
-    "BOA": "com.boa.bankapp",
-    "Dashen": "com.dashen.bankapp" 
-}
-
-def scrape_bank_reviews(app_name, app_id, n_reviews=400):
-    print(f"Scraping {app_name}...")
-    result, _ = reviews(
-        app_id,
-        lang="en",
-        country="us",
-        sort=Sort.NEWEST,
-        count=n_reviews
-    )
-
-    # 🔍 Debug: Show a sample of what you’re actually getting
-    if not result:
-        print(f"⚠️ No reviews returned for {app_name}. Check package ID.")
-    else:
-        print(result[0])  # See keys like 'content', 'score', 'at'
-
-    df = pd.DataFrame(result)
-    df["bank"] = app_name
-    df["source"] = "Google Play"
-
-    # 🔐 Use .get() in case keys are missing
-    return df[["content", "score", "at", "bank", "source"]]
-def main():
+def fetch_reviews(app_id, bank_name, n_reviews=400):
     all_reviews = []
-    for bank, app_id in BANK_APPS.items():
-        df = scrape_bank_reviews(bank, app_id)
-        all_reviews.append(df)
-    
-    final_df = pd.concat(all_reviews, ignore_index=True)
-    final_df.columns = ["review", "rating", "date", "bank", "source"]
-    final_df.to_csv("data/raw_reviews.csv", index=False)
-    print("Saved scraped reviews to data/raw_reviews.csv")
+    count = 0
+    next_token = None
+
+    while count < n_reviews:
+        batch, next_token = reviews(
+            app_id,
+            lang='en',
+            country='us',
+            sort=Sort.NEWEST,
+            count=100,
+            continuation_token=next_token
+        )
+
+        for review in batch:
+            all_reviews.append({
+                "review": review["content"],
+                "rating": review["score"],
+                "date": review["at"].date().isoformat(),
+                "bank": bank_name,
+                "source": "Google Play"
+            })
+
+        count += len(batch)
+        if not next_token:
+            break
+
+    return pd.DataFrame(all_reviews)
 
 if __name__ == "__main__":
-    main()
+    apps = {
+        "CBE": "com.ethiomobile.cbe",
+        "BOA": "com.bankofabyssinia.mobilebanking",
+        "Dashen": "com.mbanking.dashenbank"
+    }
+
+    all_dfs = []
+
+    for bank, app_id in tqdm(apps.items()):
+        df = fetch_reviews(app_id, bank)
+        all_dfs.append(df)
+
+    final_df = pd.concat(all_dfs, ignore_index=True).drop_duplicates()
+    final_df.to_csv("data/cleaned_reviews.csv", index=False)
+    print("Saved reviews to data/cleaned_reviews.csv")
