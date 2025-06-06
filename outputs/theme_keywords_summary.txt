@@ -1,0 +1,153 @@
+
+Top keywords for CBE_positive:
+good: 77
+app: 74
+best: 38
+nice: 26
+great: 14
+easy: 12
+cbe: 11
+use: 11
+banking: 10
+make: 9
+fast: 9
+one: 8
+mobile: 8
+need: 8
+amazing: 8
+
+Top keywords for CBE_neutral:
+app: 17
+cbe: 10
+like: 10
+bank: 7
+wow: 5
+work: 5
+screenshot: 5
+network: 4
+በጣም: 4
+one: 3
+banking: 3
+always: 3
+good: 3
+send: 2
+system: 2
+
+Top keywords for CBE_negative:
+app: 7
+banking: 6
+mobile: 5
+worst: 3
+ever: 3
+seen: 3
+even: 3
+problem: 2
+fix: 2
+money: 2
+account: 2
+send: 2
+cbe: 2
+fails: 2
+application: 2
+
+Top keywords for BOA_positive:
+good: 54
+app: 37
+best: 23
+nice: 14
+bank: 11
+great: 11
+boa: 10
+mobile: 9
+better: 9
+please: 8
+like: 7
+banking: 7
+use: 7
+much: 7
+make: 6
+
+Top keywords for BOA_neutral:
+app: 53
+work: 15
+bank: 15
+mobile: 14
+please: 13
+use: 13
+boa: 12
+working: 8
+fix: 8
+money: 8
+time: 7
+phone: 7
+even: 7
+banking: 7
+developer: 7
+
+Top keywords for BOA_negative:
+app: 40
+worst: 15
+even: 8
+bank: 7
+slow: 7
+working: 7
+bad: 6
+experience: 6
+poor: 6
+please: 6
+make: 5
+use: 5
+fix: 4
+always: 4
+ever: 4
+
+Top keywords for Dashen_positive:
+app: 142
+dashen: 76
+super: 65
+banking: 50
+best: 48
+good: 43
+bank: 43
+easy: 36
+one: 32
+use: 29
+amazing: 28
+fast: 23
+features: 23
+mobile: 22
+digital: 19
+
+Top keywords for Dashen_neutral:
+wow: 11
+app: 10
+one: 9
+bank: 9
+dashen: 8
+banking: 5
+step: 5
+working: 5
+like: 4
+work: 4
+use: 3
+always: 3
+digital: 3
+number: 3
+application: 3
+
+Top keywords for Dashen_negative:
+app: 7
+slow: 5
+banking: 4
+need: 4
+ever: 3
+game: 3
+time: 3
+disappointing: 3
+worst: 3
+good: 3
+bank: 2
+accounts: 2
+try: 2
+transaction: 2
+super: 2
