@@ -59,6 +59,7 @@ for bank in banks:
 
 # === Load CSV and Insert Reviews ===
 df = pd.read_csv("outputs/reviews_with_sentiment.csv")
+df['date'] = pd.to_datetime(df['date'], errors='coerce').dt.strftime('%Y-%m-%d')
 
 inserted = 0
 for _, row in df.iterrows():
