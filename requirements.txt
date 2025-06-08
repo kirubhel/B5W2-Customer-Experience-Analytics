@@ -6,4 +6,4 @@ seaborn
 nltk
 spacy
 scikit-learn
-textblob
+textbloboracledb
